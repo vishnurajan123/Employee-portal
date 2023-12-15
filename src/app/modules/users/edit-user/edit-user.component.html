@@ -1,0 +1,59 @@
+
+
+<div class="d-flex">
+    
+    <div style="height: 89vh;width: 150px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
+        
+        <a style="text-decoration: none;color: white;margin-top: 10px;" routerLink="/dashboard">Home</a>
+        <a style="text-decoration: none;color: white;margin-top: 10px;" routerLink="/users">Users</a>
+    
+    
+    </div>
+    <div class="w-100">
+        <h1>Edit User Details</h1>
+        
+        <div class="w-50 p-5 shadow">
+            <form #editUserform="ngForm"  >
+            
+                <input class="form-control mt-3" type="text" placeholder="User Id" name="id" [(ngModel)]="user.id" #uid="ngModel" required pattern="[0-9]*" >
+                <!-- invalid userId -->
+                <div *ngIf="uid.invalid && uid.touched" class="text-danger">
+                    Invalid user Id
+        
+        
+                </div>
+                <input class="form-control mt-3" type="text" placeholder="User name" name="uname" [(ngModel)]="user.name" #uname="ngModel" required pattern="[a-zA-Z]*">
+                <!-- invalid userId -->
+                <div *ngIf="uname.invalid && uname.touched" class="text-danger">
+                    Invalid username
+        
+        
+                </div>
+                <input class="form-control mt-3" type="text" placeholder="User Email" name="email" [(ngModel)]="user.email" #uemail="ngModel" required email>
+                 <!-- invalid userId -->
+                 <div *ngIf="uemail.invalid && uemail.touched" class="text-danger">
+                    Invalid email
+        
+        
+                </div>
+                <select class="form-control mt-3" name="active" id="" [(ngModel)]="user.active" #active="ngModel" required >
+                    <option value="" disabled selected hidden></option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+                 <!-- invalid userId -->
+                 <div *ngIf="active.invalid && active.touched" class="text-danger">
+                    Invalid staus
+        
+        
+                </div>
+                <button (click)="cancel(user.id)" class="btn btn-primary mt-3">Cancel</button>
+                <button (click)="editUser(user.id)" type="submit" [disabled]="editUserform.invalid" class="btn btn-primary mt-3 ms-2">Update</button>
+                
+                
+            </form>
+        
+        
+        </div>
+    </div>
+</div>

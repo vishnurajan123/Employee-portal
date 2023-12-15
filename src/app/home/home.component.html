@@ -1,0 +1,50 @@
+<div class="d-flex">
+
+    <div *ngIf="showSidebar" style="height: 89vh;width: 150px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
+    
+        <a style="text-decoration: none;color: white;margin-top: 10px;" routerLink="/dashboard">Home</a>
+        <a style="text-decoration: none;color: white;margin-top: 10px;" routerLink="/users">Users</a>
+        <button class="btn btn-info" (click)="logout()">Logout</button>
+
+    
+    </div>
+    <div class="dashboard p-3 w-100">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div style="height: 180px;background-image: url(https://i.pinimg.com/originals/63/ea/91/63ea9130a42ca02fbb3cd3d7ca6e2da1.jpg);background-size: cover;" class="admin-banner w-100 d-flex align-items-center shadow rounded p-4">
+                        <h1 class=" d-flex align-items-center text-light fs-3">
+                            <i (click)="menuBtnClick()" class="fa-solid fa-bars"></i><span class="ms-3 fw-bolder">Welcome {{admin_name}}</span>
+
+                        </h1>
+
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col-lg-5 border rounded shadow p-2">
+                            <h1>Calender</h1>
+                            <mat-card class="demo-inline-calendar-card">
+                                <mat-calendar [(selected)]="selected"></mat-calendar>
+                              </mat-card>
+                              
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6 border rounded shadow">
+                            <app-chart></app-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div style="height: 480px;" class="edit-admin shadow rounded p-5">
+                       <app-update-admin (onAdminChage)="getUpdatedAdmin($event)"></app-update-admin>
+                    </div>
+                    <div style="height: 180px; background-image: url(https://t4.ftcdn.net/jpg/04/06/48/25/360_F_406482552_7EOooMWc4aHMUna3DBW6Vy37wL8mc9wa.jpg);" class="mt-2 border rounded shadow p-2 text-light d-flex align-items-center justify-content-center">
+                        <h2 class="fw-bolder"><i class="fa-solid fa-user"></i> Employees:12</h2>
+
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+
+</div>
